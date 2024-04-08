@@ -9,6 +9,18 @@ app.get("/datos", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./datos.json"));
 });
 
+const fs = require("fs");
+
+app.get("/", (req, res) => {
+    fs.readFile(path.resolve(__dirname,"../client/build/index.html"), "utf8", (err, index) => {
+        if(err){
+            res.status(500).send(err);
+            return ;
+        }
+        res.send(index);
+})
+});
+
 app.use(express.static('public'))
 //app.use(express.static('./client/public', { root: '.' }))
 
