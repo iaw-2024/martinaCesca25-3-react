@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
+const path = require ("path");
 
 app.use(cors());
 
 app.get("/datos", (req, res) => {
-    res.sendFile("./api/datos.json", { root: '.' });
+    res.sendFile(path.resolve(__dirname, "./datos.json"));
 });
 
 app.use(express.static('public'))
