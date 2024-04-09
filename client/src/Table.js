@@ -1,4 +1,6 @@
 import './App.css';
+import User from './User.js';
+
 function Table({ datos }) {
   return (
     <div className="App-table">
@@ -11,13 +13,15 @@ function Table({ datos }) {
         </tr>
       </thead>
       <tbody>
-        {datos.map((user) => (
+        {/*datos.map((user) => (
           <tr key={user.email}>
             <td>{user.email}</td>
             <td>{user.edad}</td>
             <td>{user.nombre}</td>
           </tr>
-        ))}
+        ))*/
+        <User datos={datos}/>
+        }
       </tbody>
     </table>
      </div>
