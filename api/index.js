@@ -1,7 +1,26 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
+const path = require ("path");
 
-app.get("/datos", (req, res) => res.send("Express on Vercel!"));
+app.use(cors());
+
+app.get("/datos", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./datos.json"));
+});
+
+const fs = require("fs");
+
+app.get("/", (req, res) => {
+    fs.readFile(path.resolve(__dirname,"../client/build/index.html"), "utf8", (err, index) => {
+        if(err){
+            res.status(500).send(err);
+            return ;
+        }
+        res.send(index);
+})
+});
+
 app.use(express.static('public'))
 
 
