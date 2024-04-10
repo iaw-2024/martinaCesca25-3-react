@@ -22,7 +22,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.static('public'))
-//app.use(express.static('./client/public', { root: '.' }))
 
 
 app.listen(3001, () => console.log("Server ready on port 3001."));
